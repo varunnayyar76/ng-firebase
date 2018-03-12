@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { RegistrationComponent } from './registration.component';
 import { routing } from '../registration/registration.routing';
@@ -7,7 +8,8 @@ import { routing } from '../registration/registration.routing';
 @NgModule({
   imports: [
     CommonModule,
-    routing
+    routing,
+    FormsModule
   ],
   declarations: [
     RegistrationComponent
