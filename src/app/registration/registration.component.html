@@ -25,24 +25,31 @@
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" [(ngModel)]="model.email" name="email" required #email="ngModel">
-      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-        Email is required
+      <input type="email" class="form-control" id="email" [(ngModel)]="model.email" name="email" pattern="[^ @]*@[^ @]*" required
+        #email="ngModel">
+      <div class="alert alert-danger" *ngIf="email.errors && (email.dirty || email.touched)">
+        <div *ngIf="email.errors.required">Email is required</div>
+        <div *ngIf="email.errors.pattern">Email must contain at least the @ character</div>
       </div>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" [(ngModel)]="model.password" name="password" required #password="ngModel">
-      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-        Password is required
+      <input type="password" class="form-control" id="password" [(ngModel)]="model.password" name="password" required #password="ngModel"
+        minlength="8" validateEqual="confirmPassword" reverse="true">
+      <div class="alert alert-danger" *ngIf="password.errors && (password.dirty || password.touched)">
+        <p *ngIf="password.errors.required">Password is required</p>
+        <p *ngIf="password.errors.minlength">Password must be at least 8 characters long</p>
       </div>
     </div>
     <div class="form-group">
       <label for="confirmPassword">Confirm password</label>
       <input type="password" class="form-control" id="confirmPassword" [(ngModel)]="model.confirmPassword" name="confirmPassword"
-        required #confirmPassword="ngModel">
-      <div [hidden]="confirmPassword.valid || confirmPassword.pristine" class="alert alert-danger">
-        Confirm password is required
+        required #confirmPassword="ngModel" validateEqual="password">
+      <div class="alert alert-danger" *ngIf="confirmPassword.errors && (confirmPassword.dirty || confirmPassword.touched)">
+        <p *ngIf="confirmPassword.errors.required">Confirm Password is required</p>
+        <p *ngIf="!(confirmPassword.valid || confirmPassword.pristine)">
+            Password mismatch
+        </p>
       </div>
     </div>
     <div class="form-group">

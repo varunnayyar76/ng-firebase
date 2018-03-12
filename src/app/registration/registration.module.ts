@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { RegistrationComponent } from './registration.component';
 import { routing } from '../registration/registration.routing';
+import { EqualValidator } from './equal-validator.directive';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { routing } from '../registration/registration.routing';
     FormsModule
   ],
   declarations: [
-    RegistrationComponent
+    RegistrationComponent,
+    EqualValidator
   ]
 })
 export class RegistrationModule { }
