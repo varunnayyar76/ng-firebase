@@ -1,0 +1,20 @@
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42A948;
+  /* green */
+}
+
+.header p {
+  font-size: 15px;
+}
+
+.header {
+  text-align: center;
+}
+.login-redirect {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
